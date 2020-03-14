@@ -1,17 +1,11 @@
 const express = require('express')
 const path = require('path')
 const app = express();
-// const Listings = require('../database/schema.js')
+const PORT = 3000
 
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+mongoose.connect('mongodb://localhost/fakeListing');
 
-const ListingSchema = new Schema({
-  id: Number,
-  Name: String,
-  Address: String,
-  Host: String,
-  Booking: [{ id: Number, date: Date }],
-})
+app.get('/', (req, res) => { res.send('hello!!') }),
 
-const Listings = mongoose.model('listings', ListingSchema)
+  app.listen(PORT, (console.log(`Server is listening on port ${PORT}`)));
