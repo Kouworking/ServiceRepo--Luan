@@ -1,10 +1,18 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+const HostSchema = new Schema({
+  First: String,
+  Last: String,
+  Title: String,
+  Avatar: Buffer,
+  SuperHost: Boolean,
+  // Listing: Schema.ObjectId
+})
+
 const ListingSchema = new Schema({
   Name: String,
   Address: String,
-  Host: String,
   Booking: [{
     id: Number,
     date: Date,
@@ -12,4 +20,4 @@ const ListingSchema = new Schema({
   }],
 });
 
-module.exports = mongoose.model('listings', ListingSchema);
+module.exports = mongoose.model('host', HostSchema)
